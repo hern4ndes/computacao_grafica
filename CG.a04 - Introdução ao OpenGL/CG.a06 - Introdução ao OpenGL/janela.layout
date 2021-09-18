@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Layout>
+	<Files>
+		<File Name="janela.cpp" Top="No" Tabpos="1" TopLine="192">
+			<Cursor Line="234" Column="13"/>
+		</File>
+		<File Name="circulo.h" Top="Yes" Tabpos="2" TopLine="1">
+			<Cursor Line="15" Column="20"/>
+		</File>
+	</Files>
+</Layout>
