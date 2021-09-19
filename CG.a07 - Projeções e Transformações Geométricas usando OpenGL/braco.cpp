@@ -48,6 +48,7 @@ void init(void)
 {
 	glClearColor (1.0, 1.0, 1.0, 1.0); //Limpa a tela com a cor branca;
 	glEnable(GL_DEPTH_TEST); // Habilita o algoritmo Z-Buffer
+	glDepthMask(GL_FALSE);  
 }
 
 void reshape (int w, int h)
@@ -84,14 +85,14 @@ void keyboard (unsigned char key, int x, int y)
 		glutPostRedisplay();
 		break;
 	case 'c': // sentido anti-horário
-		if(cotovelo < 105)
+		if(cotovelo < 150)
 		{
 			cotovelo = (cotovelo + 5) % 360;
 			glutPostRedisplay();
 		}
 		break;
 	case 'C': // sentido horário
-		if(cotovelo > 0)
+		if(cotovelo > -150)
 		{
 			cotovelo = (cotovelo - 5) % 360;
 			glutPostRedisplay();
@@ -99,37 +100,48 @@ void keyboard (unsigned char key, int x, int y)
 		break;
 		// 	indicador
 	case 'i': // sentido anti-horário
-		indicador = (indicador + 5) % 360;
+		if(indicador < 60){
+		indicador = (indicador + 2) % 360;
 		glutPostRedisplay();
+		}
 		break;
 	case 'I': // sentido horário
-		indicador = (indicador - 5) % 360;
+		if(indicador > -8){
+		indicador = (indicador - 2) % 360;
 		glutPostRedisplay();
+		}
 		break;
 		//polegar
 	case 'p': // sentido anti-horário
-		polegar = (polegar + 5) % 360;
+		if (polegar > -60){
+		polegar = (polegar - 2) % 360;
 		glutPostRedisplay();
+		}
 		break;
 	case 'P': // sentido horário
-		polegar = (polegar - 5) % 360;
+		if(polegar < 8 )
+		polegar = (polegar + 2) % 360;
 		glutPostRedisplay();
 		break;
 		// 	medio
 	case 'm': // sentido anti-horário
-		medio = (medio + 5) % 360;
+		if(medio < 60){
+		medio = (medio + 2) % 360;
 		glutPostRedisplay();
+		}
 		break;
 	case 'M': // sentido horário
-		medio = (medio - 5) % 360;
+		if(medio>-8){
+		medio = (medio - 2) % 360;
 		glutPostRedisplay();
+		}
 		break;
 	case 'y': // sentido anti-horário
-		rotacao = (rotacao + 5) % 360;
+		rotacao = (rotacao + 2) % 360;
 		glutPostRedisplay();
 		break;
 	case 'Y': // sentido horário
-		rotacao = (rotacao - 5) % 360;
+		rotacao = (rotacao - 2) % 360;
 		glutPostRedisplay();
 		break;
 	case ESC:
@@ -192,7 +204,7 @@ void display(void)
 	
 	
 	
-		glPushMatrix();
+	glPushMatrix();
 	// origem posicionada no cotovelo
 	glTranslatef (1.0, 0.0, 0.0);
 	glRotatef ((GLfloat) medio, 0.0, 0.0, 1.0);
